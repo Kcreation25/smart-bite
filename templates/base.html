@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}SmartBite{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="{{ url_for('dashboard') if g.user else url_for('login') }}"><div class="mark"></div><div><div class="brand-text">Smart<span>Bite</span></div><div class="tagline">Nutrition &amp; budget planner</div></div></a>
+  {% if g.user %}<nav>
+    <a href="{{ url_for('profile_setup') }}" class="{{ 'active' if request.endpoint=='profile_setup' }}">Plan</a>
+    <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint=='dashboard' }}">Dashboard</a>
+    <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint=='about' }}">About</a>
+    <a href="{{ url_for('logout') }}">Log out ({{ g.user['name'] }})</a>
+  </nav>{% endif %}
+</div>
+<main>{% with messages = get_flashed_messages() %}{% if messages %}{% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}{% endif %}{% endwith %}{% block content %}{% endblock %}</main>
+<footer>SmartBite — built for smarter, budget-aware eating. Not a substitute for professional medical or nutrition advice.</footer>
+{% block scripts %}{% endblock %}
+</body></html>
