@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}SmartBite — Eat well. Spend wisely.{% endblock %}
+{% block content %}
+<section class="hero"><div class="hero-copy">
+<div class="eyebrow"><span class="eyebrow-dot"></span> PERSONAL NUTRITION, MADE PRACTICAL</div>
+<h1>Eat well.<br><em>Spend wisely.</em></h1>
+<p class="hero-lede">A smarter way to plan everyday Indian meals around your nutrition goals and monthly food budget.</p>
+<div class="hero-actions"><a class="btn-primary hero-btn" href="{{ url_for('signup') }}">Build my meal plan <span aria-hidden="true">→</span></a><a class="hero-login" href="{{ url_for('login') }}">I already have an account</a></div>
+<div class="hero-note">7-day meal plans · Grocery estimates · Your own nutrition dashboard</div>
+</div><div class="hero-art" aria-label="Illustration of a balanced Indian meal"><div class="plate-ring"><div class="plate"><div class="plate-food food-one"></div><div class="plate-food food-two"></div><div class="plate-food food-three"></div><div class="plate-food food-four"></div><div class="plate-center">✦</div></div></div><div class="float-card float-cal"><span class="float-icon">✳</span><div><b>Personal targets</b><small>Calories &amp; protein</small></div></div><div class="float-card float-budget"><span class="float-icon">₹</span><div><b>Budget aware</b><small>Meal and grocery costs</small></div></div><div class="hero-stamp">GOOD FOOD<br>GOOD SENSE</div></div></section>
+<section class="feature-strip"><article><span>01</span><h3>Know your numbers</h3><p>Estimate BMI, BMR, daily energy needs and protein targets from your profile.</p></article><article><span>02</span><h3>Plan your week</h3><p>Build a seven-day menu around your diet preference, goals and meal schedule.</p></article><article><span>03</span><h3>Shop with clarity</h3><p>Get an ingredient list with estimated quantities and costs for your plan.</p></article></section>
+<div class="home-disclaimer">SmartBite provides general planning estimates for educational use. It is not medical advice or a substitute for a qualified dietitian.</div>
+{% endblock %}
