@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — SmartBite{% endblock %}
+{% block content %}
+<div class="dashboard-head"><div><p class="eyebrow">YOUR PERSONAL NUTRITION OVERVIEW</p><h1>Good food, planned well.</h1><p>Your current seven-day meal plan and estimated grocery budget.</p></div><div class="top-actions"><a class="btn-secondary" href="{{ url_for('profile_setup') }}">Edit profile</a><a class="btn-secondary" href="{{ url_for('report_csv') }}">Download CSV</a></div></div>
+<div class="stats">
+<div class="stat"><div class="label">BMI</div><div class="value">{{ "%.1f"|format(profile.bmi) }}</div><div class="sub">{{ bmi_cat }}</div></div>
+<div class="stat"><div class="label">Daily calories</div><div class="value">{{ avg_cal }}</div><div class="sub">Target {{ profile.calorie_target|round|int }} kcal</div></div>
+<div class="stat"><div class="label">Protein / day</div><div class="value">{{ avg_protein }}g</div><div class="sub">Target {{ profile.protein_target|round|int }}g</div></div>
+<div class="stat"><div class="label">Monthly estimate</div><div class="value">₹{{ plan.monthly_cost|round|int }}</div><div class="sub">Budget ₹{{ profile.budget|round|int }}</div></div>
+<div class="stat"><div class="label">Diet preference</div><div class="value">{{ profile.diet }}</div><div class="sub">{{ profile.meals_per_day }} meals per day</div></div></div>
+<div class="budget-banner {{ 'warn' if plan.budget_insufficient else 'ok' }}"><div class="bb-text"><strong>{{ 'Budget needs attention' if plan.budget_insufficient else 'Your plan is within the estimated budget' }}</strong><br>Estimated monthly meal cost: ₹{{ plan.monthly_cost|round|int }}. {% if plan.min_monthly_cost %}Minimum estimated cost to reach the calorie target: ₹{{ plan.min_monthly_cost|round|int }}.{% endif %}</div></div>
+<div class="section-title"><h2>Your 7-day meal plan</h2></div>
+{% for day in plan.days %}<section class="day-card"><div class="day-head"><h3>Day {{ loop.index }}</h3><div class="day-totals">{{ day.total_cal|round|int }} kcal · {{ day.total_protein|round|int }}g protein · ₹{{ day.total_cost|round|int }}</div></div>{% for meal in day.meals %}<div class="meal-chip {{ 'nonveg' if meal.name in nonveg_names }}"><span>{{ meal.name }}</span><span class="meta">{{ meal.cal|round|int }} kcal · {{ meal.protein|round|int }}g protein · ₹{{ meal.cost|round|int }}</span></div>{% endfor %}</section>{% endfor %}
+<div class="section-title"><h2>Monthly grocery estimate</h2></div><div class="card"><table class="grocery-table"><thead><tr><th>Ingredient</th><th>Quantity</th><th>Estimated cost</th></tr></thead><tbody>{% for row in grocery.rows %}<tr><td>{{ row.label }}</td><td>{{ row.qty }} {{ row.unit }}</td><td>₹{{ row.cost }}</td></tr>{% endfor %}<tr><td colspan="2">Estimated total</td><td>₹{{ grocery.total_cost }}</td></tr></tbody></table><p class="grocery-note">Prices are estimates and may vary by location, season and retailer.</p></div>
+<div class="section-title"><h2>Nutrition insights</h2></div><div class="insights"><ul>{% for tip in insights %}<li>{{ tip }}</li>{% endfor %}</ul></div>
+<div class="disclaimer">Nutrition and cost figures are estimates for general planning. SmartBite is not medical advice. Consult a qualified healthcare professional for individual medical nutrition needs.</div>
+{% endblock %}
