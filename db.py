@@ -3,7 +3,7 @@ import os
 import json
 from flask import g
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smartbite.db")
+DB_PATH = os.environ.get("SMARTBITE_DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "smartbite.db"))
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS users (
