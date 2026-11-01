@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}About — SmartBite{% endblock %}
+{% block content %}
+<div class="card"><h2>About SmartBite</h2>
+<p style="line-height:1.7;color:var(--ink-soft);">SmartBite is a budget-aware nutrition planner built for everyday Indian eating. It combines your body metrics (BMI, BMR, TDEE) with a database of realistically priced meals and their ingredient quantities to build a 7-day menu sized to your calories, protein target, and monthly food budget — then checks the real grocery cost of repeating that week for a month against your budget before showing you anything.</p>
+<h3 style="margin-top:24px;">How your data is stored</h3>
+<p style="line-height:1.7;color:var(--ink-soft);">This version runs as a real web application with its own server and database (SQLite, in the file <code>smartbite.db</code> next to the app). When you sign up, your password is hashed with Werkzeug's PBKDF2-SHA256 (salted, one-way — never stored as plain text) and saved in the <code>users</code> table. Logging in checks your password against that hash and starts a signed session cookie; your profile, meal plans, grocery lists, weight log, and reports are all tied to your user ID and reloaded automatically each time you log back in.</p>
+<h3 style="margin-top:24px;">Not medical advice</h3><p style="line-height:1.7;color:var(--ink-soft);">This tool, including the AI assistant, gives general nutrition and budgeting guidance only. It isn't a substitute for advice from a doctor or registered dietitian — especially if you have a diagnosed medical condition.</p></div>
+{% endblock %}
