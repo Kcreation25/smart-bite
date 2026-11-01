@@ -1,0 +1,12 @@
+ingredient_key,ingredient_name,estimated_price_inr,price_unit,assumption_note
+rice,Rice,0.045,per gram,Illustrative estimate; verify local market prices.
+wheat,Wheat flour (atta),0.04,per gram,Illustrative estimate; verify local market prices.
+pulses,Pulses / dal,0.11,per gram,Illustrative estimate; verify local market prices.
+vegetables,Mixed vegetables,0.035,per gram,Illustrative estimate; verify local market prices.
+chicken,Chicken,0.2,per gram,Illustrative estimate; verify local market prices.
+fish,Fish,0.25,per gram,Illustrative estimate; verify local market prices.
+mutton,Mutton,0.65,per gram,Illustrative estimate; verify local market prices.
+paneer,Paneer,0.32,per gram,Illustrative estimate; verify local market prices.
+oil,Cooking oil,0.14,per gram,Illustrative estimate; verify local market prices.
+milk,Milk / curd,0.06,per gram,Illustrative estimate; verify local market prices.
+eggs,Eggs,6,per piece,Illustrative estimate; verify local market prices.
