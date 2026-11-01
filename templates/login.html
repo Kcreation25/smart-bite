@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Log in — SmartBite{% endblock %}
+{% block content %}
+<div class="auth-wrap"><h1 style="font-size:26px;margin-bottom:6px;">Welcome back</h1><p style="color:var(--ink-soft);font-size:14px;margin-bottom:20px;">Log in to see your saved plan and grocery list.</p>
+<div class="card"><form method="post"><div class="field"><label>Email</label><input type="email" name="email" required></div><div class="field"><label>Password</label><input type="password" name="password" required></div><button class="btn-primary" type="submit" style="width:100%;">Log in</button></form><p style="margin-top:16px;font-size:13.5px;color:var(--ink-soft);">New here? <a href="{{ url_for('signup') }}">Create an account</a></p></div></div>
+{% endblock %}
